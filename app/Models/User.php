@@ -1,16 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use Notifiable;
-
-    /**
+   /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -20,7 +17,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should   be hidden for arrays.
      *
      * @var array
      */
@@ -36,4 +33,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($query) {
+            $query->uuid = Uuid::uuid4();
+        });
+    }
 }

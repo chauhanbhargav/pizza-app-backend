@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
+    Route::post('register', 'AuthController@register')->name('register');
+    Route::post('login', 'AuthController@login')->name('login');
+    Route::get('pizza', 'PizzaController@index')->name('pizza');
+    Route::post('order', 'OrderController@store')->name('order');
+    Route::resource('cart', 'CartController');
+
+    Route::middleware('VerifyJWTToken')->group(function () {
+        Route::post('logout', 'AuthController@logout')->name('logout');
+        Route::get('orders', 'OrderController@index')->name('orders');
+    });
 });
