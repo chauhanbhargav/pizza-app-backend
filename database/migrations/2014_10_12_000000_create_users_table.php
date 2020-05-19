@@ -1,6 +1,5 @@
 <?php
 
-use App\Utils\AppConstant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
+            $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
