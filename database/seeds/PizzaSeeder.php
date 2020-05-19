@@ -18,7 +18,7 @@ class PizzaSeeder extends Seeder
         $data = [
             [
                 'name' => 'Neapolitan Pizza',
-                'description' => 'The typical Neapolitan pizza toppings are fresh mozzarella, tomatoes, basil leaves, oregano, and olive oil. Since Neapolitan pizza is thin, it isn't designed to handle the weight of too many toppings. In fact, Neapolitan pizza is so thin that it's typically eaten with a fork and knife.',
+                'description' => 'The typical Neapolitan pizza toppings are fresh mozzarella, tomatoes, basil leaves, oregano, and olive oil. Since Neapolitan pizza is thin, it isn\'t designed to handle the weight of too many toppings. In fact, Neapolitan pizza is so thin that it\'s typically eaten with a fork and knife.',
                 'image' => 'images/paneer-makhani.jpg',
                 'sizes' => [1, 2, 3],
                 'crusts' => [1, 2, 3, 4],
