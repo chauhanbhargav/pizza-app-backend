@@ -10,6 +10,7 @@
 In the project directory, you can run:
 
 ### `composer install`
+### `php artisan key:generate`
 ### `php artisan jwt:generate`
 ### `php artisan migrate`
 ### `php artisan db:seed`
