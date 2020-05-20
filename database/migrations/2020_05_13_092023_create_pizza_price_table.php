@@ -18,7 +18,8 @@ class CreatePizzaPriceTable extends Migration
             $table->foreignId('pizza_id')->constrained('pizza_detail')->onDelete('cascade')->after('id');
             $table->foreignId('size_id')->constrained('size')->onDelete('cascade')->after('id');
             $table->foreignId('crust_id')->constrained('crust')->onDelete('cascade')->after('id');
-            $table->string('price');
+            $table->string('dollar');
+            $table->string('euro');
             $table->timestamps();
         });
     }

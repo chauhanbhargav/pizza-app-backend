@@ -61,6 +61,7 @@ class OrderController extends Controller
             $order->email = $request->email;
             $order->contact_no = $request->contact_no;
             $order->address = $request->address;
+            $order->currency = $request->currency;
             $order->delivery_charges = AppConstant::DELIVERY_CHARGE;
             $order->save();
             
@@ -68,15 +69,16 @@ class OrderController extends Controller
             $items = 0;
             $total = 0;
             foreach ($cart as $value) {
+                $price = $request->currency === AppConstant::DOLLAR ? $value->pizza_detail->dollar : $value->pizza_detail->euro;
                 $orderDetail = $this->orderDetail;
                 $orderDetail->order_id = $order->id;
                 $orderDetail->pizza_price_id = $value->pizza_price_id;
                 $orderDetail->quantity = $value->quantity;
-                $orderDetail->price = $value->pizza_detail->price;
+                $orderDetail->price = $price;
                 $orderDetail->save();
 
                 $items += $value->quantity;
-                $total += $value->quantity * $value->pizza_detail->price;
+                $total += $value->quantity * $price;
             }
 
             $order->total_items = $items;

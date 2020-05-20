@@ -34,7 +34,8 @@ class OrderRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'contact_no' => 'required',
-            'address' => 'required'            
+            'address' => 'required',         
+            'currency' => 'required'         
         ];
     }
 

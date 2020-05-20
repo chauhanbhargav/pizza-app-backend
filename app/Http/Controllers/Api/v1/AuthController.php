@@ -110,10 +110,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        dd('here');
-
         $token = JWTAuth::getToken();
-
         try {
             DB::beginTransaction();
 

@@ -22,7 +22,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
     Route::resource('cart', 'CartController');
 
     Route::middleware('VerifyJWTToken')->group(function () {
-        Route::post('logout', 'AuthController@logout')->name('logout');
+        Route::get('logout', 'AuthController@logout')->name('logout');
         Route::get('orders', 'OrderController@index')->name('orders');
     });
 });

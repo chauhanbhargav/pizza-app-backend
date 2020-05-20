@@ -24,6 +24,7 @@ class CreateOrderTable extends Migration
             $table->double('delivery_charges');
             $table->double('total_price')->nullable();
             $table->integer('total_items')->nullable();
+            $table->string('currency')->nullable();
             $table->tinyInteger('order_status')->default(0);
             $table->timestamps();
         });
